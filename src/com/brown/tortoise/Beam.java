@@ -19,17 +19,23 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
     TextView textView;
 
     @Override
+    /**
+       Called when Activity started; can think of as a constructor
+    **/
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
-        //TextView textView = (TextView) findViewById(R.id.textView);
+        setContentView(R.layout.main);
+        TextView textView = (TextView) findViewById(R.id.textView);
+        
         // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mNfcAdapter == null) {
             Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+            // finish() is part of the Activity class
             finish();
             return;
         }
+
         // Register callback
         mNfcAdapter.setNdefPushMessageCallback(this, this);
     }
@@ -40,8 +46,11 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
                        "Beam Time: " + System.currentTimeMillis());
         NdefMessage msg = 
             new NdefMessage(new NdefRecord[]{ 
-                    createMime("application/vnd.com.example.android.beam", 
-                               text.getBytes())
+                    NdefRecord.createMime("text/plain", text.getBytes()),
+                    // creates an AAR so this beamed message will always
+                    // launch this application or prompt Google Play to
+                    // show this app
+                    NdefRecord.createApplicationRecord("com.brown.tortoise")
                 });
         return msg;
     }
