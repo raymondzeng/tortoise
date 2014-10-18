@@ -21,8 +21,8 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        TextView textView = (TextView) findViewById(R.id.textView);
+        //setContentView(R.layout.main);
+        //TextView textView = (TextView) findViewById(R.id.textView);
         // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mNfcAdapter == null) {
@@ -38,22 +38,14 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
     public NdefMessage createNdefMessage(NfcEvent event) {
         String text = ("Beam me up, Android!\n\n" +
                        "Beam Time: " + System.currentTimeMillis());
-        NdefMessage msg = new NdefMessage(
-                                          new NdefRecord[] { createMime(
-                                                                        "application/vnd.com.example.android.beam", text.getBytes())
-                                                             /**
-                                                              * The Android Application Record (AAR) is commented out. When a device
-                                                              * receives a push with an AAR in it, the application specified in the AAR
-                                                              * is guaranteed to run. The AAR overrides the tag dispatch system.
-                                                              * You can add it back in to guarantee that this
-                                                              * activity starts when receiving a beamed message. For now, this code
-                                                              * uses the tag dispatch system.
-                                                              */
-                                                             //,NdefRecord.createApplicationRecord("com.example.android.beam")
-                                          });
+        NdefMessage msg = 
+            new NdefMessage(new NdefRecord[]{ 
+                    createMime("application/vnd.com.example.android.beam", 
+                               text.getBytes())
+                });
         return msg;
     }
-
+    
     @Override
     public void onResume() {
         super.onResume();
@@ -74,8 +66,8 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
      */
     void processIntent(Intent intent) {
         textView = (TextView) findViewById(R.id.textView);
-        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
-                                                              NfcAdapter.EXTRA_NDEF_MESSAGES);
+        Parcelable[] rawMsgs = 
+            intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
