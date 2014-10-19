@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.nio.charset.Charset;
 
-
 public class Beam extends Activity implements CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
     TextView textView;
