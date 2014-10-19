@@ -1,0 +1,1 @@
+<User ID | hash of unique device code | User's Public Key | My Private Key | Curve Param ID for my key | Curve Param ID for user key | Phone Number> = Entries in Map
