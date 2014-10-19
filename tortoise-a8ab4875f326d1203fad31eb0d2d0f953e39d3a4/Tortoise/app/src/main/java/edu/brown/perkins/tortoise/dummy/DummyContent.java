@@ -25,9 +25,11 @@ public class DummyContent {
 
     static {
         // Add 3 sample items.
-        addItem(new DummyItem("1", "Item 1"));
-        addItem(new DummyItem("2", "Item 2"));
-        addItem(new DummyItem("3", "Item 3"));
+        addItem(new DummyItem("553f17c", "Sr. Hines"));
+        addItem(new DummyItem("6500df86", "rz14"));
+        addItem(new DummyItem("402a079c", "ping"));
+        addItem(new DummyItem("59ec2012", "flchen"));
+        addItem(new DummyItem("4cf777e8", "twd"));
     }
 
     private static void addItem(DummyItem item) {
@@ -49,7 +51,7 @@ public class DummyContent {
 
         @Override
         public String toString() {
-            return content;
+            return content + "\n" + id;
         }
     }
 }
