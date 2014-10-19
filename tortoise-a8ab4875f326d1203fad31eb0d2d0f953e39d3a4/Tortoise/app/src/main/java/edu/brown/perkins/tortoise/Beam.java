@@ -48,7 +48,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
         NdefMessage msg = 
             new NdefMessage(new NdefRecord[]{
                     //NdefRecord.createUri("dsafasfasdfasdf"),
-                    NdefRecord.createMime("text/plain", text.getBytes()),
+                    NdefRecord.createMime("application/edu.brown.perkins.tortoise", text.getBytes()),
                     // creates an AAR so this beamed message will always
                     // launch this application or prompt Google Play to
                     // show this app
