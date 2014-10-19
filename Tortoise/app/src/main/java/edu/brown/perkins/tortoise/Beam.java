@@ -9,6 +9,7 @@ import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.nio.charset.Charset;
@@ -35,6 +36,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
             finish();
             return;
         }
+        Log.d("oncreate", "working");
 
         // Register callback
         mNfcAdapter.setNdefPushMessageCallback(this, this);
@@ -42,9 +44,10 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
+        Log.d("oncreate", "working");
         String text = ("Beam me up, Android!\n\n" +
                        "Beam Time: " + System.currentTimeMillis());
-        System.out.println(text);
+        Log.e(text, text);
         NdefMessage msg = 
             new NdefMessage(new NdefRecord[]{ 
                     NdefRecord.createMime("text/plain", text.getBytes()),

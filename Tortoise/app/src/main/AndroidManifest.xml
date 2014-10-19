@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- disable default beam -->
+        <meta-data android:name="android.nfc.disable_beam_default"
+            android:value="true" />
     </application>
 
 </manifest>
