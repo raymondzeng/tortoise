@@ -3,7 +3,7 @@ package edu.brown.perkins.tortoise;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.View;
 
 /**
  * An activity representing a list of Items. This activity
@@ -69,7 +69,6 @@ public class ItemListActivity extends Activity
             getFragmentManager().beginTransaction()
                     .replace(R.id.item_detail_container, fragment)
                     .commit();
-
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
@@ -77,5 +76,10 @@ public class ItemListActivity extends Activity
             detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
+    }
+
+    public void startNFC(View view) {
+        Intent intent = new Intent(this, Beam.class);
+        startActivity(intent);
     }
 }

@@ -2,13 +2,7 @@
 <resources>
 
     <string name="app_name">Tortoise</string>
-    <string name="title_section1">Messages</string>
-    <string name="title_section2">Contacts</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example"></string>
     <string name="action_settings">Settings</string>
-    <string name="title_item_detail">Item Detail</string>
+    <string name="title_item_detail">Chat</string>
 
 </resources>
