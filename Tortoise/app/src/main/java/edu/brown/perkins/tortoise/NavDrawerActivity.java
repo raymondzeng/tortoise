@@ -35,6 +35,7 @@ public class NavDrawerActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Beam b = new Beam();
         setContentView(R.layout.activity_nav_drawer);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
