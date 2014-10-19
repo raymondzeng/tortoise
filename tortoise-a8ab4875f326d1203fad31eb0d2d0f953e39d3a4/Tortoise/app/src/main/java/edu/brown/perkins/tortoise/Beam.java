@@ -28,7 +28,6 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
         //TextView textView = (TextView) findViewById(R.id.textView);
         
         // Check for available NFC Adapter
-        System.out.println("Hi");
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mNfcAdapter == null) {
             Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
@@ -37,16 +36,12 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
             return;
         }
         Log.d("oncreate", "working");
-	System.out.println("mNfcAdapter is not null!");
-
         // Register callback
         mNfcAdapter.setNdefPushMessageCallback(this, this);
     }
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        Log.d("oncreate", "working");
-	System.out.println("Created an NDEF message!");
         String text = ("Beam me up, Android!\n\n" +
                        "Beam Time: " + System.currentTimeMillis());
         Log.e(text, text);
@@ -57,7 +52,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
                     // creates an AAR so this beamed message will always
                     // launch this application or prompt Google Play to
                     // show this app
-                    NdefRecord.createApplicationRecord("com.brown.tortoise")
+                    //NdefRecord.createApplicationRecord("com.brown.tortoise")
                 });
         return msg;
     }
@@ -81,12 +76,19 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
      * Parses the NDEF Message from the intent and prints to the TextView
      */
     void processIntent(Intent intent) {
-        //textView = (TextView) findViewById(R.id.textView);
-        Parcelable[] rawMsgs = 
+        System.out.println("Processing");
+        Parcelable[] rawMsgs =
             intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
-        // record 0 contains the MIME type, record 1 is the AAR, if present
-        textView.setText(new String(msg.getRecords()[0].getPayload()));
+        finish();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        System.out.println("Stopping");
+        finish();
+    }
+
 }
