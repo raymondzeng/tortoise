@@ -57,7 +57,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback {
                     // creates an AAR so this beamed message will always
                     // launch this application or prompt Google Play to
                     // show this app
-                    NdefRecord.createApplicationRecord("com.brown.tortoise")
+                    // NdefRecord.createApplicationRecord("com.brown.tortoise")
                 });
         return msg;
     }
