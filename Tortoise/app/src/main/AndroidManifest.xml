@@ -27,6 +27,7 @@
 
         <!-- disable default beam -->
         <!--<meta-data android:name="android.nfc.disable_beam_default"
+<<<<<<< HEAD
             android:value="false" />-->
     </application>
 
