@@ -22,4 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:20.0.0'
+    compile files('Tortoise/lib/CoDec-build17-jdk13.jar')
+    compile files('Tortoise/lib/FlexiCoreProvider-1.7p7.signed.jar')
+    compile files('Tortoise/lib/FlexiECProvider-1.7p7.signed.jar')
 }
